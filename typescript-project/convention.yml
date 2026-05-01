@@ -17,6 +17,10 @@ conventions:
   - path: Faithlife/CodingGuidelines/conventions/prettierignore-section
     settings:
       name: generated
+      text: |
+        dist/
+        node_modules/
+        package-lock.json
   - path: Faithlife/CodingGuidelines/conventions/license-mit
     settings:
       copyright-holder: ${{ settings.copyright-holder }}
