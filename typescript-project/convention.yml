@@ -1,0 +1,24 @@
+conventions:
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-root
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-json
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-md
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-yaml
+  - path: ../gitattributes
+  - path: ../gitignore-node
+  - path: ../prettier-config
+  - path: ../tsconfig-node
+  - path: ../dependabot
+    settings:
+      ecosystems:
+        - github-actions
+        - npm
+      interval: weekly
+      open-pull-requests-limit: 5
+  - path: Faithlife/CodingGuidelines/conventions/prettierignore-section
+  - path: Faithlife/CodingGuidelines/conventions/license-mit
+    settings:
+      copyright-holder: ${{ settings.copyright-holder }}
+
+pull-request:
+  labels:
+    - automation

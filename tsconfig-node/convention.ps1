@@ -1,0 +1,45 @@
+#requires -PSEdition Core
+#requires -Version 7.0
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+if ($args.Count -eq 0) {
+    throw 'The input path argument is required.'
+}
+
+$inputJson = Get-Content -LiteralPath $args[0] -Raw | ConvertFrom-Json
+$settings = $inputJson.settings
+
+$tsconfig = @{
+    compilerOptions = @{
+        target = if ($settings -and $settings.PSObject.Properties['target']) { $settings.target } else { 'ES2022' }
+        module = if ($settings -and $settings.PSObject.Properties['module']) { $settings.module } else { 'NodeNext' }
+        moduleResolution = if ($settings -and $settings.PSObject.Properties['moduleResolution']) { $settings.moduleResolution } else { 'NodeNext' }
+        outDir = if ($settings -and $settings.PSObject.Properties['outDir']) { $settings.outDir } else { 'dist' }
+        rootDir = if ($settings -and $settings.PSObject.Properties['rootDir']) { $settings.rootDir } else { 'src' }
+        strict = if ($settings -and $settings.PSObject.Properties['strict']) { [bool]$settings.strict } else { $true }
+        noEmitOnError = if ($settings -and $settings.PSObject.Properties['noEmitOnError']) { [bool]$settings.noEmitOnError } else { $true }
+        skipLibCheck = if ($settings -and $settings.PSObject.Properties['skipLibCheck']) { [bool]$settings.skipLibCheck } else { $true }
+        esModuleInterop = if ($settings -and $settings.PSObject.Properties['esModuleInterop']) { [bool]$settings.esModuleInterop } else { $true }
+    }
+    include = @('src/**/*.ts')
+} | ConvertTo-Json -Depth 10
+
+$configPath = Join-Path $PWD 'tsconfig.json'
+
+if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
+    Set-Content -LiteralPath $configPath -Value $tsconfig -Encoding utf8NoBOM
+    Write-Host "Created '$configPath'."
+    exit 0
+}
+
+$existingContent = Get-Content -LiteralPath $configPath -Raw
+
+if ($existingContent -eq $tsconfig) {
+    Write-Host "'$configPath' already matches the published standard."
+    exit 0
+}
+
+Set-Content -LiteralPath $configPath -Value $tsconfig -Encoding utf8NoBOM
+Write-Host "Updated '$configPath'."

@@ -1,0 +1,32 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+packages/
+
+# Test results
+TestResults/
+
+# Coverage
+coverage/
+*.coverage
+
+# Publish
+publish/
+
+# BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+# DotNet local tools
+.dotnet_tools/

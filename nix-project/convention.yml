@@ -1,0 +1,12 @@
+conventions:
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-root
+  - path: ../gitattributes
+  - path: ../gitignore-nix
+  - path: ../nix-direnv
+  - path: Faithlife/CodingGuidelines/conventions/license-mit
+    settings:
+      copyright-holder: ${{ settings.copyright-holder }}
+
+pull-request:
+  labels:
+    - automation

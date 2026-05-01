@@ -1,0 +1,19 @@
+conventions:
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-root
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-json
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-md
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-ps1
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-yaml
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-csharp
+  - path: ../gitattributes
+  - path: ../gitignore-dotnet
+  - path: Faithlife/CodingGuidelines/conventions/dotnet-sdk10
+  - path: ../dotnet-cpm
+  - path: Faithlife/CodingGuidelines/conventions/nuget-config
+  - path: Faithlife/CodingGuidelines/conventions/license-mit
+    settings:
+      copyright-holder: ${{ settings.copyright-holder }}
+
+pull-request:
+  labels:
+    - automation
