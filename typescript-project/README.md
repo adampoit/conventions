@@ -13,9 +13,8 @@ Composite convention for TypeScript/Node.js projects. Bundles formatting, toolin
 | `prettierignore-section` | `.prettierignore` from Faithlife/CodingGuidelines (when Prettier detected) |
 | `tsconfig-node` | `tsconfig.json` for Node.js (ES2022, NodeNext, strict) |
 | `dependabot` | Dependabot for GitHub Actions + npm (weekly) |
+| `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions |
 | `license-mit` | MIT license from Faithlife/CodingGuidelines |
-
-Note: This composite intentionally does **not** include a CI workflow. Projects manage their own GitHub Actions workflows.
 
 ## Settings
 

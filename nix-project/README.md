@@ -10,6 +10,7 @@ Composite convention for Nix projects. Bundles formatting, gitignore, direnv, an
 | `gitattributes` | Standard `.gitattributes` |
 | `gitignore-nix` | Nix `.gitignore` entries (additive) |
 | `nix-direnv` | `.envrc` for nix-direnv auto-loading |
+| `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions |
 | `license-mit` | MIT license from Faithlife/CodingGuidelines |
 
 Note: This composite intentionally does **not** include a `flake.nix` convention. Projects manage their own `flake.nix` since it's a code file that varies significantly per project.

@@ -12,6 +12,7 @@ Composite convention for .NET projects. Bundles formatting, build settings, and 
 | `dotnet-sdk` | `global.json` from Faithlife/CodingGuidelines |
 | `dotnet-cpm` | `Directory.Packages.props` for central package management |
 | `nuget-config` | `nuget.config` from Faithlife/CodingGuidelines |
+| `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions |
 | `license-mit` | MIT license from Faithlife/CodingGuidelines |
 
 ## Settings
