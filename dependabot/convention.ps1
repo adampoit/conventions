@@ -43,22 +43,35 @@ updates:
 $($ecosystemEntries -join "`n")
 "@
 
+function Format-WithPrettier($content, $filePath) {
+    $formatted = $content | & npx --yes prettier --stdin-filepath $filePath 2>$null | Out-String
+    if ($LASTEXITCODE -eq 0 -and $formatted) {
+        return $formatted
+    }
+    return $content
+}
+
+$configContent = Format-WithPrettier $configContent '.github/dependabot.yml'
+
 $configPath = Join-Path $PWD '.github/dependabot.yml'
 $configDirectory = Split-Path -Parent $configPath
 New-Item -ItemType Directory -Path $configDirectory -Force | Out-Null
 
-if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
-    Set-Content -LiteralPath $configPath -Value $configContent -Encoding utf8NoBOM
-    Write-Host "Created '$configPath'."
-    exit 0
+$existingContent = ''
+if (Test-Path -LiteralPath $configPath -PathType Leaf) {
+    $existingContent = Get-Content -LiteralPath $configPath -Raw
 }
-
-$existingContent = Get-Content -LiteralPath $configPath -Raw
 
 if ($existingContent -eq $configContent) {
     Write-Host "'$configPath' already matches the published standard."
     exit 0
 }
 
-Set-Content -LiteralPath $configPath -Value $configContent -Encoding utf8NoBOM
-Write-Host "Updated '$configPath'."
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($configPath, $configContent, $utf8NoBom)
+
+if ($existingContent -eq '') {
+    Write-Host "Created '$configPath'."
+} else {
+    Write-Host "Updated '$configPath'."
+}
