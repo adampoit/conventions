@@ -48,18 +48,21 @@ $config = Format-WithPrettier $config '.prettierrc.json'
 
 $configPath = Join-Path $PWD '.prettierrc.json'
 
-if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
-    Set-Content -LiteralPath $configPath -Value $config -Encoding utf8NoBOM
-    Write-Host "Created '$configPath'."
-    exit 0
+$existingContent = ''
+if (Test-Path -LiteralPath $configPath -PathType Leaf) {
+    $existingContent = Get-Content -LiteralPath $configPath -Raw
 }
-
-$existingContent = Get-Content -LiteralPath $configPath -Raw
 
 if ($existingContent -eq $config) {
     Write-Host "'$configPath' already matches the published standard."
     exit 0
 }
 
-Set-Content -LiteralPath $configPath -Value $config -Encoding utf8NoBOM
-Write-Host "Updated '$configPath'."
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($configPath, $config, $utf8NoBom)
+
+if ($existingContent -eq '') {
+    Write-Host "Created '$configPath'."
+} else {
+    Write-Host "Updated '$configPath'."
+}
