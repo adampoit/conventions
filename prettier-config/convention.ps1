@@ -36,6 +36,16 @@ $config = [ordered]@{
     )
 } | ConvertTo-Json -Depth 10
 
+function Format-WithPrettier($content, $filePath) {
+    $formatted = $content | & npx --yes prettier --stdin-filepath $filePath 2>$null | Out-String
+    if ($LASTEXITCODE -eq 0 -and $formatted) {
+        return $formatted
+    }
+    return $content
+}
+
+$config = Format-WithPrettier $config '.prettierrc.json'
+
 $configPath = Join-Path $PWD '.prettierrc.json'
 
 if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
