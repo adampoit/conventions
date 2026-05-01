@@ -18,7 +18,7 @@ $tabWidth = if ($settings -and $settings.PSObject.Properties['tabWidth']) { $set
 $trailingComma = if ($settings -and $settings.PSObject.Properties['trailingComma']) { $settings.trailingComma } else { 'all' }
 $printWidth = if ($settings -and $settings.PSObject.Properties['printWidth']) { $settings.printWidth } else { 120 }
 
-$config = @{
+$config = [ordered]@{
     semi = [bool]$semi
     singleQuote = [bool]$singleQuote
     useTabs = [bool]$useTabs
@@ -26,9 +26,9 @@ $config = @{
     trailingComma = [string]$trailingComma
     printWidth = [int]$printWidth
     overrides = @(
-        @{
+        [ordered]@{
             files = @('*.{json,yml,yaml}')
-            options = @{
+            options = [ordered]@{
                 useTabs = $false
                 tabWidth = 2
             }

@@ -11,8 +11,8 @@ if ($args.Count -eq 0) {
 $inputJson = Get-Content -LiteralPath $args[0] -Raw | ConvertFrom-Json
 $settings = $inputJson.settings
 
-$tsconfig = @{
-    compilerOptions = @{
+$tsconfig = [ordered]@{
+    compilerOptions = [ordered]@{
         target = if ($settings -and $settings.PSObject.Properties['target']) { $settings.target } else { 'ES2022' }
         module = if ($settings -and $settings.PSObject.Properties['module']) { $settings.module } else { 'NodeNext' }
         moduleResolution = if ($settings -and $settings.PSObject.Properties['moduleResolution']) { $settings.moduleResolution } else { 'NodeNext' }
