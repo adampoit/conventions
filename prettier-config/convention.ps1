@@ -25,6 +25,15 @@ $config = @{
     tabWidth = [int]$tabWidth
     trailingComma = [string]$trailingComma
     printWidth = [int]$printWidth
+    overrides = @(
+        @{
+            files = @('*.{json,yml,yaml}')
+            options = @{
+                useTabs = $false
+                tabWidth = 2
+            }
+        }
+    )
 } | ConvertTo-Json -Depth 10
 
 $configPath = Join-Path $PWD '.prettierrc.json'

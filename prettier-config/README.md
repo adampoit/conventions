@@ -15,6 +15,7 @@ Installs a `.prettierrc.json` file for consistent code formatting.
 
 - Creates `.prettierrc.json` if it doesn't exist
 - Overwrites existing file with the configured settings
+- JSON and YAML files always use spaces with `tabWidth: 2` regardless of the global `useTabs` setting
 
 ## Example
 
