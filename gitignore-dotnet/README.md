@@ -18,6 +18,6 @@ Works well alongside other additive gitignore conventions:
 
 ```yaml
 conventions:
-  - path: adampoit/conventions/gitignore-dotnet
-  - path: adampoit/conventions/gitignore-node
+    - path: adampoit/conventions/gitignore-dotnet
+    - path: adampoit/conventions/gitignore-node
 ```

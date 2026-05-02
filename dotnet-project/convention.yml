@@ -10,7 +10,7 @@ conventions:
   - path: Faithlife/CodingGuidelines/conventions/dotnet-sdk10
   - path: ../dotnet-cpm
   - path: Faithlife/CodingGuidelines/conventions/nuget-config
-  - path: Faithlife/CodingGuidelines/conventions/repo-conventions-workflow
+  - path: ../repo-conventions-workflow
   - path: Faithlife/CodingGuidelines/conventions/license-mit
     settings:
       copyright-holder: ${{ settings.copyright-holder }}

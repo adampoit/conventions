@@ -21,10 +21,10 @@ Installs a `.prettierrc.json` file for consistent code formatting.
 
 ```yaml
 conventions:
-  - path: adampoit/conventions/prettier-config
-    settings:
-      semi: true
-      singleQuote: true
-      useTabs: true
-      tabWidth: 4
+    - path: adampoit/conventions/prettier-config
+      settings:
+          semi: true
+          singleQuote: true
+          useTabs: true
+          tabWidth: 4
 ```

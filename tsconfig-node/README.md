@@ -23,9 +23,9 @@ Installs a `tsconfig.json` for Node.js TypeScript projects.
 
 ```yaml
 conventions:
-  - path: adampoit/conventions/tsconfig-node
-    settings:
-      target: ES2024
-      outDir: build
-      rootDir: lib
+    - path: adampoit/conventions/tsconfig-node
+      settings:
+          target: ES2024
+          outDir: build
+          rootDir: lib
 ```

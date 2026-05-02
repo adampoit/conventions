@@ -17,12 +17,12 @@ Installs a standard Dependabot configuration for automated dependency updates.
 
 ```yaml
 conventions:
-  - path: adampoit/conventions/dependabot
-    settings:
-      ecosystems:
-        - github-actions
-        - npm
-        - pip
-      interval: daily
-      open-pull-requests-limit: 10
+    - path: adampoit/conventions/dependabot
+      settings:
+          ecosystems:
+              - github-actions
+              - npm
+              - pip
+          interval: daily
+          open-pull-requests-limit: 10
 ```

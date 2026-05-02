@@ -29,7 +29,7 @@ Or add individual conventions:
 repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root
 repo-conventions add adampoit/conventions/gitattributes
 repo-conventions add Faithlife/CodingGuidelines/conventions/license-mit
-repo-conventions add Faithlife/CodingGuidelines/conventions/repo-conventions-workflow
+repo-conventions add adampoit/conventions/repo-conventions-workflow
 ```
 
 Then apply them:
@@ -48,25 +48,26 @@ repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root --
 
 ### Composites
 
-| Convention | Description |
-|------------|-------------|
-| [`typescript-project`](typescript-project) | TypeScript/Node.js project setup (editorconfig, prettierignore, license, updater workflow from Faithlife; gitattributes, gitignore, prettier, tsconfig, dependabot) |
-| [`dotnet-project`](dotnet-project) | .NET project setup (editorconfig, dotnet SDK, nuget-config, license, updater workflow from Faithlife; gitattributes, gitignore, CPM) |
-| [`nix-project`](nix-project) | Nix project setup (editorconfig, license, updater workflow from Faithlife; gitattributes, gitignore, direnv) |
+| Convention                                 | Description                                                                                                                                          |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`typescript-project`](typescript-project) | TypeScript/Node.js project setup (editorconfig, prettierignore, license, updater workflow; gitattributes, gitignore, prettier, tsconfig, dependabot) |
+| [`dotnet-project`](dotnet-project)         | .NET project setup (editorconfig, dotnet SDK, nuget-config, license, updater workflow; gitattributes, gitignore, CPM)                                |
+| [`nix-project`](nix-project)               | Nix project setup (editorconfig, license, updater workflow; gitattributes, gitignore, direnv)                                                        |
 
 ### Individual
 
-| Convention | Description |
-|------------|-------------|
-| [`gitattributes`](gitattributes) | Standard `.gitattributes` for line endings and diffs |
-| [`gitignore-node`](gitignore-node) | Node.js `.gitignore` (additive — merges with existing) |
-| [`gitignore-dotnet`](gitignore-dotnet) | .NET `.gitignore` (additive — merges with existing) |
-| [`prettier-config`](prettier-config) | `.prettierrc.json` with configurable rules |
-| [`tsconfig-node`](tsconfig-node) | `tsconfig.json` for Node.js TypeScript projects |
-| [`dotnet-cpm`](dotnet-cpm) | Central Package Management (`Directory.Packages.props`) |
-| [`nix-direnv`](nix-direnv) | `.envrc` for nix-direnv auto-loading |
-| [`gitignore-nix`](gitignore-nix) | Nix `.gitignore` entries (additive) |
-| [`dependabot`](dependabot) | Dependabot configuration for automated dependency updates |
+| Convention                                               | Description                                                     |
+| -------------------------------------------------------- | --------------------------------------------------------------- |
+| [`gitattributes`](gitattributes)                         | Standard `.gitattributes` for line endings and diffs            |
+| [`gitignore-node`](gitignore-node)                       | Node.js `.gitignore` (additive — merges with existing)          |
+| [`gitignore-dotnet`](gitignore-dotnet)                   | .NET `.gitignore` (additive — merges with existing)             |
+| [`prettier-config`](prettier-config)                     | `.prettierrc.json` with configurable rules                      |
+| [`tsconfig-node`](tsconfig-node)                         | `tsconfig.json` for Node.js TypeScript projects                 |
+| [`dotnet-cpm`](dotnet-cpm)                               | Central Package Management (`Directory.Packages.props`)         |
+| [`nix-direnv`](nix-direnv)                               | `.envrc` for nix-direnv auto-loading                            |
+| [`gitignore-nix`](gitignore-nix)                         | Nix `.gitignore` entries (additive)                             |
+| [`dependabot`](dependabot)                               | Dependabot configuration for automated dependency updates       |
+| [`repo-conventions-workflow`](repo-conventions-workflow) | GitHub Actions workflow to apply repo conventions on a schedule |
 
 ## Authoring Conventions
 
@@ -82,13 +83,13 @@ Composites bundle multiple conventions using `convention.yml` instead of `conven
 
 ```yaml
 conventions:
-  - path: Faithlife/CodingGuidelines/conventions/editorconfig-root
-  - path: ../prettier-config
-    settings:
-      semi: ${{ settings.prettier.semi }}
-  - path: Faithlife/CodingGuidelines/conventions/license-mit
-    settings:
-      copyright-holder: ${{ settings.copyright-holder }}
+    - path: Faithlife/CodingGuidelines/conventions/editorconfig-root
+    - path: ../prettier-config
+      settings:
+          semi: ${{ settings.prettier.semi }}
+    - path: Faithlife/CodingGuidelines/conventions/license-mit
+      settings:
+          copyright-holder: ${{ settings.copyright-holder }}
 ```
 
 See the [`typescript-project`](typescript-project) convention for a full example, and the [RepoConventions authoring guide](https://github.com/Faithlife/RepoConventions/blob/master/docs/authoring-conventions.md) for details.
