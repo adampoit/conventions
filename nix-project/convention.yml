@@ -4,9 +4,7 @@ conventions:
   - path: ../gitignore-nix
   - path: ../nix-direnv
   - path: ../repo-conventions-workflow
-  - path: Faithlife/CodingGuidelines/conventions/license-mit
-    settings:
-      copyright-holder: ${{ settings.copyright-holder }}
+  - path: ../license-mit
 
 pull-request:
   labels:

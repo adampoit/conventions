@@ -68,6 +68,7 @@ repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root --
 | [`gitignore-nix`](gitignore-nix)                         | Nix `.gitignore` entries (additive)                             |
 | [`dependabot`](dependabot)                               | Dependabot configuration for automated dependency updates       |
 | [`repo-conventions-workflow`](repo-conventions-workflow) | GitHub Actions workflow to apply repo conventions on a schedule |
+| [`license-mit`](license-mit)                             | MIT license with `Adam Poit` copyright holder                   |
 
 ## Authoring Conventions
 
