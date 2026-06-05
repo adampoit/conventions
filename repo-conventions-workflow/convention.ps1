@@ -9,7 +9,7 @@ $existingWorkflowContent = $null
 $existingMinute = $null
 if (Test-Path -LiteralPath $workflowPath) {
 	$existingWorkflowContent = Get-Content -LiteralPath $workflowPath -Raw
-	if ($existingWorkflowContent -match "(?m)^\s+- cron: '(?<minute>([0-9]|[1-5][0-9])) 9 \* \* 1-5'\r?$") {
+	if ($existingWorkflowContent -match '(?m)^\s+- cron: [''"\"](?<minute>([0-9]|[1-5][0-9])) 9 \* \* 1-5[''"\"]\r?$') {
 		$existingMinute = $Matches.minute
 	}
 }
@@ -43,10 +43,31 @@ permissions:
 
 jobs:
   apply:
-    uses: Faithlife/CodingGuidelines/.github/workflows/repo-conventions-call.yml@master
-    with:
-      conventions: `${{ github.event.inputs.conventions || '' }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: `${{ secrets.ACTIONS_PAT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: `${{ secrets.ACTIONS_PAT }}
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Configure Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add requested conventions
+        if: `${{ github.event_name == 'workflow_dispatch' && inputs.conventions != '' }}
+        run: dnx repo-conventions add `${{ inputs.conventions }} --commit
+
+      - name: Apply conventions
+        run: dnx repo-conventions apply --open-pr
 "@
 
 function Format-WithPrettier($content, $filePath) {

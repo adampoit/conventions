@@ -8,11 +8,12 @@ Creates `.github/workflows/repo-conventions.yml` with:
 
 - A cron schedule (randomized minute, 9 AM UTC, weekdays) to keep repos from all hitting GitHub at the same time.
 - `workflow_dispatch` trigger with an optional `conventions` input to add new conventions on demand.
-- Uses the `Faithlife/CodingGuidelines` reusable workflow to do the actual work.
+- Runs RepoConventions directly with `dnx repo-conventions apply --open-pr`.
+- Uses a repository secret named `ACTIONS_PAT` for checkout and GitHub CLI authentication, so convention PRs can trigger other workflows.
 
-## Settings
+## Required secrets
 
-None.
+- `ACTIONS_PAT`: a GitHub personal access token with `contents: write` and `pull-requests: write` access to the repository.
 
 ## Preserving existing schedule
 
