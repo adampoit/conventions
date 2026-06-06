@@ -13,13 +13,14 @@ Composite convention for .NET projects. Bundles formatting, build settings, and 
 | `dotnet-cpm`                | `Directory.Packages.props` for central package management                              |
 | `nuget-config`              | `nuget.config` from Faithlife/CodingGuidelines                                         |
 | `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions                                     |
-| `license-mit`               | MIT license from Faithlife/CodingGuidelines                                            |
+| `license-mit`               | Optional MIT license                                                                   |
 
 ## Settings
 
-| Setting            | Description          | Default    |
-| ------------------ | -------------------- | ---------- |
-| `copyright-holder` | Name for MIT license | (required) |
+| Setting                    | Description                              | Default     |
+| -------------------------- | ---------------------------------------- | ----------- |
+| `license.enabled`          | Set to `false` to skip the MIT `LICENSE` | `true`      |
+| `license.copyright-holder` | Name for MIT license                     | `Adam Poit` |
 
 Individual bundled conventions (`dotnet-sdk`) use their own documented defaults. If you need to customize those, add the individual convention directly instead of using this composite.
 
@@ -29,5 +30,8 @@ Individual bundled conventions (`dotnet-sdk`) use their own documented defaults.
 conventions:
     - path: adampoit/conventions/dotnet-project
       settings:
-          copyright-holder: 'Adam Poit'
+          license:
+              enabled: false
 ```
+
+When `license.enabled` is `true` or omitted, optionally set `license.copyright-holder` to override the default.

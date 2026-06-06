@@ -5,6 +5,9 @@ conventions:
   - path: ../nix-direnv
   - path: ../repo-conventions-workflow
   - path: ../license-mit
+    settings:
+      enabled: ${{ settings.license.enabled }}
+      copyright-holder: ${{ settings.license.copyright-holder }}
 
 pull-request:
   labels:

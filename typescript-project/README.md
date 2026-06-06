@@ -14,13 +14,14 @@ Composite convention for TypeScript/Node.js projects. Bundles formatting, toolin
 | `tsconfig-node`             | `tsconfig.json` for Node.js (ES2022, NodeNext, strict)                     |
 | `dependabot`                | Dependabot for GitHub Actions + npm (weekly)                               |
 | `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions                         |
-| `license-mit`               | MIT license from Faithlife/CodingGuidelines                                |
+| `license-mit`               | Optional MIT license                                                       |
 
 ## Settings
 
-| Setting            | Description          | Default    |
-| ------------------ | -------------------- | ---------- |
-| `copyright-holder` | Name for MIT license | (required) |
+| Setting                    | Description                              | Default     |
+| -------------------------- | ---------------------------------------- | ----------- |
+| `license.enabled`          | Set to `false` to skip the MIT `LICENSE` | `true`      |
+| `license.copyright-holder` | Name for MIT license                     | `Adam Poit` |
 
 ## Usage
 
@@ -28,5 +29,8 @@ Composite convention for TypeScript/Node.js projects. Bundles formatting, toolin
 conventions:
     - path: adampoit/conventions/typescript-project
       settings:
-          copyright-holder: 'Adam Poit'
+          license:
+              enabled: false
 ```
+
+When `license.enabled` is `true` or omitted, optionally set `license.copyright-holder` to override the default.

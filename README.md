@@ -28,7 +28,7 @@ Or add individual conventions:
 ```pwsh
 repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root
 repo-conventions add adampoit/conventions/gitattributes
-repo-conventions add Faithlife/CodingGuidelines/conventions/license-mit
+repo-conventions add adampoit/conventions/license-mit
 repo-conventions add adampoit/conventions/repo-conventions-workflow
 ```
 
@@ -48,11 +48,11 @@ repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root --
 
 ### Composites
 
-| Convention                                 | Description                                                                                                                                          |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`typescript-project`](typescript-project) | TypeScript/Node.js project setup (editorconfig, prettierignore, license, updater workflow; gitattributes, gitignore, prettier, tsconfig, dependabot) |
-| [`dotnet-project`](dotnet-project)         | .NET project setup (editorconfig, dotnet SDK, nuget-config, license, updater workflow; gitattributes, gitignore, CPM)                                |
-| [`nix-project`](nix-project)               | Nix project setup (editorconfig, license, updater workflow; gitattributes, gitignore, direnv)                                                        |
+| Convention                                 | Description                                                                                                                                                   |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`typescript-project`](typescript-project) | TypeScript/Node.js project setup (editorconfig, prettierignore, optional license, updater workflow; gitattributes, gitignore, prettier, tsconfig, dependabot) |
+| [`dotnet-project`](dotnet-project)         | .NET project setup (editorconfig, dotnet SDK, nuget-config, optional license, updater workflow; gitattributes, gitignore, CPM)                                |
+| [`nix-project`](nix-project)               | Nix project setup (editorconfig, optional license, updater workflow; gitattributes, gitignore, direnv)                                                        |
 
 ### Individual
 
@@ -68,7 +68,7 @@ repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root --
 | [`gitignore-nix`](gitignore-nix)                         | Nix `.gitignore` entries (additive)                             |
 | [`dependabot`](dependabot)                               | Dependabot configuration for automated dependency updates       |
 | [`repo-conventions-workflow`](repo-conventions-workflow) | GitHub Actions workflow to apply repo conventions on a schedule |
-| [`license-mit`](license-mit)                             | MIT license with `Adam Poit` copyright holder                   |
+| [`license-mit`](license-mit)                             | Optional MIT license with `Adam Poit` copyright holder          |
 
 ## Authoring Conventions
 
@@ -88,9 +88,10 @@ conventions:
     - path: ../prettier-config
       settings:
           semi: ${{ settings.prettier.semi }}
-    - path: Faithlife/CodingGuidelines/conventions/license-mit
+    - path: ../license-mit
       settings:
-          copyright-holder: ${{ settings.copyright-holder }}
+          enabled: ${{ settings.license.enabled }}
+          copyright-holder: ${{ settings.license.copyright-holder }}
 ```
 
 See the [`typescript-project`](typescript-project) convention for a full example, and the [RepoConventions authoring guide](https://github.com/Faithlife/RepoConventions/blob/master/docs/authoring-conventions.md) for details.

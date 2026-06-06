@@ -22,9 +22,10 @@ conventions:
         node_modules/
         package-lock.json
   - path: ../repo-conventions-workflow
-  - path: Faithlife/CodingGuidelines/conventions/license-mit
+  - path: ../license-mit
     settings:
-      copyright-holder: ${{ settings.copyright-holder }}
+      enabled: ${{ settings.license.enabled }}
+      copyright-holder: ${{ settings.license.copyright-holder }}
 
 pull-request:
   labels:

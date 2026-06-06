@@ -1,6 +1,6 @@
 # nix-project
 
-Composite convention for Nix projects. Bundles formatting, gitignore, direnv, and licensing.
+Composite convention for Nix projects. Bundles formatting, gitignore, direnv, and optional licensing.
 
 ## Includes
 
@@ -11,15 +11,16 @@ Composite convention for Nix projects. Bundles formatting, gitignore, direnv, an
 | `gitignore-nix`             | Nix `.gitignore` entries (additive)                      |
 | `nix-direnv`                | `.envrc` for nix-direnv auto-loading                     |
 | `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions       |
-| `license-mit`               | MIT license from Faithlife/CodingGuidelines              |
+| `license-mit`               | Optional MIT license                                     |
 
 Note: This composite intentionally does **not** include a `flake.nix` convention. Projects manage their own `flake.nix` since it's a code file that varies significantly per project.
 
 ## Settings
 
-| Setting            | Description          | Default    |
-| ------------------ | -------------------- | ---------- |
-| `copyright-holder` | Name for MIT license | (required) |
+| Setting                    | Description                              | Default     |
+| -------------------------- | ---------------------------------------- | ----------- |
+| `license.enabled`          | Set to `false` to skip the MIT `LICENSE` | `true`      |
+| `license.copyright-holder` | Name for MIT license                     | `Adam Poit` |
 
 ## Usage
 
@@ -27,5 +28,8 @@ Note: This composite intentionally does **not** include a `flake.nix` convention
 conventions:
     - path: adampoit/conventions/nix-project
       settings:
-          copyright-holder: 'Adam Poit'
+          license:
+              enabled: false
 ```
+
+When `license.enabled` is `true` or omitted, optionally set `license.copyright-holder` to override the default.
