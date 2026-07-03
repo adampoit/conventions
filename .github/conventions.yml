@@ -1,0 +1,22 @@
+conventions:
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-root
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-json
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-md
+  - path: Faithlife/CodingGuidelines/conventions/editorconfig-yaml
+  - path: ../gitattributes
+  - path: ../prettier-config
+  - path: ../dependabot
+    settings:
+      ecosystems:
+        - github-actions
+      interval: weekly
+      open-pull-requests-limit: 5
+  - path: ../repo-conventions-workflow
+  - path: ../license-mit
+    settings:
+      enabled: true
+      copyright-holder: Adam Poit
+
+pull-request:
+  labels:
+    - automation
