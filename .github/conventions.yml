@@ -5,12 +5,18 @@ conventions:
   - path: Faithlife/CodingGuidelines/conventions/editorconfig-yaml
   - path: ../gitattributes
   - path: ../prettier-config
-  - path: ../dependabot
+  - path: ../renovate
     settings:
-      ecosystems:
+      managers:
         - github-actions
-      interval: weekly
-      open-pull-requests-limit: 5
+      customManagers:
+        - customType: regex
+          managerFilePatterns:
+            - /^repo-conventions-workflow\/convention\.ps1$/
+          matchStrings:
+            - "(?<depName>actions/checkout)@(?<currentValue>[^'\\s]+)"
+            - "(?<depName>actions/setup-dotnet)@(?<currentValue>[^'\\s]+)"
+          datasourceTemplate: github-tags
   - path: ../repo-conventions-workflow
   - path: ../license-mit
     settings:

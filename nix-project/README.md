@@ -10,6 +10,7 @@ Composite convention for Nix projects. Bundles formatting, gitignore, direnv, an
 | `gitattributes`             | Standard `.gitattributes`                                |
 | `gitignore-nix`             | Nix `.gitignore` entries (additive)                      |
 | `nix-direnv`                | `.envrc` for nix-direnv auto-loading                     |
+| `renovate`                  | Renovate for GitHub Actions + Nix                        |
 | `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions       |
 | `license-mit`               | Optional MIT license                                     |
 

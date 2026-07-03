@@ -7,10 +7,18 @@ $ErrorActionPreference = 'Stop'
 $workflowPath = Join-Path $PWD '.github/workflows/repo-conventions.yml'
 $existingWorkflowContent = $null
 $existingMinute = $null
+$checkoutAction = 'actions/checkout@v4'
+$setupDotnetAction = 'actions/setup-dotnet@v4'
 if (Test-Path -LiteralPath $workflowPath) {
 	$existingWorkflowContent = Get-Content -LiteralPath $workflowPath -Raw
 	if ($existingWorkflowContent -match '(?m)^\s+- cron: [''"\"](?<minute>([0-9]|[1-5][0-9])) 9 \* \* 1-5[''"\"]\r?$') {
 		$existingMinute = $Matches.minute
+	}
+	if ($existingWorkflowContent -match '(?m)^\s+uses: (?<action>actions/checkout@\S+)\r?$') {
+		$checkoutAction = $Matches.action
+	}
+	if ($existingWorkflowContent -match '(?m)^\s+uses: (?<action>actions/setup-dotnet@\S+)\r?$') {
+		$setupDotnetAction = $Matches.action
 	}
 }
 
@@ -48,12 +56,12 @@ jobs:
       GH_TOKEN: `${{ secrets.ACTIONS_PAT }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: $checkoutAction
         with:
           token: `${{ secrets.ACTIONS_PAT }}
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: $setupDotnetAction
         with:
           dotnet-version: 10.0.x
 

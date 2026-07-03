@@ -7,13 +7,11 @@ conventions:
   - path: ../gitignore-node
   - path: ../prettier-config
   - path: ../tsconfig-node
-  - path: ../dependabot
+  - path: ../renovate
     settings:
-      ecosystems:
+      managers:
         - github-actions
         - npm
-      interval: weekly
-      open-pull-requests-limit: 5
   - path: Faithlife/CodingGuidelines/conventions/prettierignore-section
     settings:
       name: generated

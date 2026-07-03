@@ -3,6 +3,11 @@ conventions:
   - path: ../gitattributes
   - path: ../gitignore-nix
   - path: ../nix-direnv
+  - path: ../renovate
+    settings:
+      managers:
+        - github-actions
+        - nix
   - path: ../repo-conventions-workflow
   - path: ../license-mit
     settings:

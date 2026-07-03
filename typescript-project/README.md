@@ -12,7 +12,7 @@ Composite convention for TypeScript/Node.js projects. Bundles formatting, toolin
 | `prettier-config`           | `.prettierrc.json` (tabs, single quotes, trailing commas, 120 width)       |
 | `prettierignore-section`    | `.prettierignore` from Faithlife/CodingGuidelines (when Prettier detected) |
 | `tsconfig-node`             | `tsconfig.json` for Node.js (ES2022, NodeNext, strict)                     |
-| `dependabot`                | Dependabot for GitHub Actions + npm (weekly)                               |
+| `renovate`                  | Renovate for GitHub Actions + npm                                          |
 | `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions                         |
 | `license-mit`               | Optional MIT license                                                       |
 

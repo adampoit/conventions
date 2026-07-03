@@ -48,11 +48,11 @@ repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root --
 
 ### Composites
 
-| Convention                                 | Description                                                                                                                                                   |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`typescript-project`](typescript-project) | TypeScript/Node.js project setup (editorconfig, prettierignore, optional license, updater workflow; gitattributes, gitignore, prettier, tsconfig, dependabot) |
-| [`dotnet-project`](dotnet-project)         | .NET project setup (editorconfig, dotnet SDK, nuget-config, optional license, updater workflow; gitattributes, gitignore, CPM)                                |
-| [`nix-project`](nix-project)               | Nix project setup (editorconfig, optional license, updater workflow; gitattributes, gitignore, direnv)                                                        |
+| Convention                                 | Description                                                                                                                                                 |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`typescript-project`](typescript-project) | TypeScript/Node.js project setup (editorconfig, prettierignore, optional license, updater workflow; gitattributes, gitignore, prettier, tsconfig, Renovate) |
+| [`dotnet-project`](dotnet-project)         | .NET project setup (editorconfig, dotnet SDK, nuget-config, optional license, updater workflow; gitattributes, gitignore, CPM, Renovate)                    |
+| [`nix-project`](nix-project)               | Nix project setup (editorconfig, optional license, updater workflow; gitattributes, gitignore, direnv, Renovate)                                            |
 
 ### Individual
 
@@ -66,7 +66,7 @@ repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root --
 | [`dotnet-cpm`](dotnet-cpm)                               | Central Package Management (`Directory.Packages.props`)         |
 | [`nix-direnv`](nix-direnv)                               | `.envrc` for nix-direnv auto-loading                            |
 | [`gitignore-nix`](gitignore-nix)                         | Nix `.gitignore` entries (additive)                             |
-| [`dependabot`](dependabot)                               | Dependabot configuration for automated dependency updates       |
+| [`renovate`](renovate)                                   | Renovate configuration for automated dependency updates         |
 | [`repo-conventions-workflow`](repo-conventions-workflow) | GitHub Actions workflow to apply repo conventions on a schedule |
 | [`license-mit`](license-mit)                             | Optional MIT license with `Adam Poit` copyright holder          |
 

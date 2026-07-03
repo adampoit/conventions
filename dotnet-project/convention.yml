@@ -10,6 +10,11 @@ conventions:
   - path: Faithlife/CodingGuidelines/conventions/dotnet-sdk10
   - path: ../dotnet-cpm
   - path: Faithlife/CodingGuidelines/conventions/nuget-config
+  - path: ../renovate
+    settings:
+      managers:
+        - github-actions
+        - nuget
   - path: ../repo-conventions-workflow
   - path: ../license-mit
     settings:

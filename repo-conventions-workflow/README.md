@@ -15,6 +15,6 @@ Creates `.github/workflows/repo-conventions.yml` with:
 
 - `ACTIONS_PAT`: a GitHub personal access token with `contents: write` and `pull-requests: write` access to the repository.
 
-## Preserving existing schedule
+## Preserving existing schedule and action versions
 
-If the workflow already exists, the convention preserves its cron minute so the schedule doesn't jump around on every run.
+If the workflow already exists, the convention preserves its cron minute so the schedule doesn't jump around on every run. It also preserves the existing `actions/checkout` and `actions/setup-dotnet` versions so dependency updater PRs are not reverted by the next convention run.
