@@ -8,7 +8,7 @@ $workflowPath = Join-Path $PWD '.github/workflows/repo-conventions.yml'
 $existingWorkflowContent = $null
 $existingMinute = $null
 $checkoutAction = 'actions/checkout@v4'
-$setupDotnetAction = 'actions/setup-dotnet@v4'
+$setupDotnetAction = 'actions/setup-dotnet@v4.3.1'
 if (Test-Path -LiteralPath $workflowPath) {
 	$existingWorkflowContent = Get-Content -LiteralPath $workflowPath -Raw
 	if ($existingWorkflowContent -match '(?m)^\s+- cron: [''"\"](?<minute>([0-9]|[1-5][0-9])) 9 \* \* 1-5[''"\"]\r?$') {
