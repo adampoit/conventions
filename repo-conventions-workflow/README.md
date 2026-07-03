@@ -9,11 +9,12 @@ Creates `.github/workflows/repo-conventions.yml` with:
 - A cron schedule (randomized minute, 9 AM UTC, weekdays) to keep repos from all hitting GitHub at the same time.
 - `workflow_dispatch` trigger with an optional `conventions` input to add new conventions on demand.
 - Runs RepoConventions directly with `dnx repo-conventions apply --open-pr`.
-- Uses a repository secret named `ACTIONS_PAT` for checkout and GitHub CLI authentication, so convention PRs can trigger other workflows.
+- Uses the [`not-adam`](https://github.com/adampoit/not-adam) GitHub App for checkout and GitHub CLI authentication, so convention PRs can trigger other workflows.
 
-## Required secrets
+## Required configuration
 
-- `ACTIONS_PAT`: a GitHub personal access token with `contents: write` and `pull-requests: write` access to the repository.
+- Repository variable `NOT_ADAM_APP_ID`: the `not-adam` GitHub App ID.
+- Repository secret `NOT_ADAM_APP_PRIVATE_KEY`: the `not-adam` GitHub App private key.
 
 ## Preserving existing schedule and action versions
 
