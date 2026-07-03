@@ -7,7 +7,7 @@ $ErrorActionPreference = 'Stop'
 $workflowPath = Join-Path $PWD '.github/workflows/repo-conventions.yml'
 $existingWorkflowContent = $null
 $existingMinute = $null
-$checkoutAction = 'actions/checkout@v4'
+$checkoutAction = 'actions/checkout@v4.3.1'
 $setupDotnetAction = 'actions/setup-dotnet@v4'
 if (Test-Path -LiteralPath $workflowPath) {
 	$existingWorkflowContent = Get-Content -LiteralPath $workflowPath -Raw
