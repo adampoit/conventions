@@ -13,7 +13,6 @@ Creates `.github/workflows/repo-conventions.yml` with:
 
 ## Required configuration
 
-- Repository variable `NOT_ADAM_APP_ID`: the `not-adam` GitHub App ID.
 - Repository secret `NOT_ADAM_APP_PRIVATE_KEY`: the `not-adam` GitHub App private key.
 
 ## Preserving existing schedule and action versions
