@@ -15,6 +15,9 @@ $managers = @('github-actions')
 if ($settings -and $settings.PSObject.Properties['managers']) {
 	$managers = @($settings.managers)
 }
+if ($settings -and $settings.PSObject.Properties['customManagers'] -and 'custom.regex' -notin $managers) {
+	$managers += 'custom.regex'
+}
 
 $dependencyDashboard = $true
 if ($settings -and $settings.PSObject.Properties['dependencyDashboard']) {

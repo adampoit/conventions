@@ -3,14 +3,14 @@
   "extends": ["config:recommended"],
   "dependencyDashboard": true,
   "labels": ["automation"],
-  "enabledManagers": ["github-actions"],
+  "enabledManagers": ["github-actions", "custom.regex"],
   "customManagers": [
     {
       "customType": "regex",
       "managerFilePatterns": ["/^repo-conventions-workflow\\/convention\\.ps1$/"],
       "matchStrings": [
-        "(?<depName>actions/checkout)@(?<currentValue>[^'\\s]+)",
-        "(?<depName>actions/setup-dotnet)@(?<currentValue>[^'\\s]+)"
+        "(?m)^\\$checkoutAction = '(?<depName>actions/checkout)@(?<currentValue>[^'\\s]+)'",
+        "(?m)^\\$setupDotnetAction = '(?<depName>actions/setup-dotnet)@(?<currentValue>[^'\\s]+)'"
       ],
       "datasourceTemplate": "github-tags"
     }
