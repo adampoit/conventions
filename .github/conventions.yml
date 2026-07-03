@@ -18,6 +18,7 @@ conventions:
             - "(?m)^\\$checkoutAction = '(?<depName>actions/checkout)@(?<currentValue>[^'\\s]+)'"
             - "(?m)^\\$setupDotnetAction = '(?<depName>actions/setup-dotnet)@(?<currentValue>[^'\\s]+)'"
           datasourceTemplate: github-tags
+          versioningTemplate: regex:^v(?<major>\d+)$
   - path: ../repo-conventions-workflow
   - path: ../license-mit
     settings:
