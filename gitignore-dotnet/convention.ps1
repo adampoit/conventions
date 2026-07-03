@@ -21,7 +21,7 @@ if (Test-Path -LiteralPath $gitignorePath) {
         ForEach-Object { $_.Trim() })
 }
 
-$missingEntries = $templateEntries | Where-Object { $existingEntries -notcontains $_ }
+$missingEntries = @($templateEntries | Where-Object { $existingEntries -notcontains $_ })
 
 if ($missingEntries.Count -eq 0) {
     Write-Host "'.gitignore' already contains all published entries."
