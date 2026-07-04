@@ -12,25 +12,51 @@ $inputJson = Get-Content -LiteralPath $args[0] -Raw | ConvertFrom-Json
 $settings = $inputJson.settings
 
 $managers = @('github-actions')
-if ($settings -and $settings.PSObject.Properties['managers'] -and $null -ne $settings.managers) {
+if ($settings -and $settings.PSObject.Properties['managers']) {
 	$managers = @($settings.managers)
 }
-if ($settings -and $settings.PSObject.Properties['additionalManagers'] -and $null -ne $settings.additionalManagers) {
-	$managers += @($settings.additionalManagers)
-}
-$managers = @($managers | Select-Object -Unique)
 if ($settings -and $settings.PSObject.Properties['customManagers'] -and 'custom.regex' -notin $managers) {
 	$managers += 'custom.regex'
 }
 
+$configPath = Join-Path $PWD 'renovate.json'
+$existingContent = ''
+$existingConfig = $null
+if (Test-Path -LiteralPath $configPath -PathType Leaf) {
+	$existingContent = Get-Content -LiteralPath $configPath -Raw
+	if (-not [string]::IsNullOrWhiteSpace($existingContent)) {
+		$existingConfig = $existingContent | ConvertFrom-Json
+	}
+}
+
+if ($existingConfig -and $existingConfig.PSObject.Properties['enabledManagers']) {
+	$managers = @($existingConfig.enabledManagers) + $managers
+}
+$managers = @($managers | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) } | Select-Object -Unique)
+
 $dependencyDashboard = $true
+if ($existingConfig -and $existingConfig.PSObject.Properties['dependencyDashboard']) {
+	$dependencyDashboard = [bool] $existingConfig.dependencyDashboard
+}
 if ($settings -and $settings.PSObject.Properties['dependencyDashboard']) {
 	$dependencyDashboard = [bool] $settings.dependencyDashboard
 }
 
 $labels = @('automation')
+if ($existingConfig -and $existingConfig.PSObject.Properties['labels']) {
+	$labels = @($existingConfig.labels)
+}
 if ($settings -and $settings.PSObject.Properties['labels']) {
-	$labels = @($settings.labels)
+	$labels = @($labels) + @($settings.labels)
+}
+$labels = @($labels | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) } | Select-Object -Unique)
+
+$customManagers = @()
+if ($existingConfig -and $existingConfig.PSObject.Properties['customManagers']) {
+	$customManagers += @($existingConfig.customManagers)
+}
+if ($settings -and $settings.PSObject.Properties['customManagers']) {
+	$customManagers += @($settings.customManagers)
 }
 
 $config = [ordered] @{
@@ -41,8 +67,8 @@ $config = [ordered] @{
 	enabledManagers = $managers
 }
 
-if ($settings -and $settings.PSObject.Properties['customManagers']) {
-	$config.customManagers = @($settings.customManagers)
+if ($customManagers.Count -gt 0) {
+	$config.customManagers = $customManagers
 }
 
 $configContent = $config | ConvertTo-Json -Depth 20
@@ -56,12 +82,6 @@ function Format-WithPrettier($content, $filePath) {
 }
 
 $configContent = Format-WithPrettier $configContent 'renovate.json'
-
-$configPath = Join-Path $PWD 'renovate.json'
-$existingContent = ''
-if (Test-Path -LiteralPath $configPath -PathType Leaf) {
-	$existingContent = Get-Content -LiteralPath $configPath -Raw
-}
 
 if ($existingContent -eq $configContent) {
 	Write-Host "'$configPath' already matches the published standard."

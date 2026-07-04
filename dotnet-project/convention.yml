@@ -16,7 +16,6 @@ conventions:
       managers:
         - github-actions
         - nuget
-      additionalManagers: ${{ settings.renovate.additionalManagers }}
   - path: ../repo-conventions-workflow
   - path: ../license-mit
     settings:
