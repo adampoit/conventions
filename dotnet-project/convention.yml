@@ -8,6 +8,7 @@ conventions:
   - path: ../gitattributes
   - path: ../gitignore-dotnet
   - path: Faithlife/CodingGuidelines/conventions/dotnet-sdk-10
+  - path: Faithlife/CodingGuidelines/conventions/dotnet-slnx
   - path: ../dotnet-cpm
   - path: Faithlife/CodingGuidelines/conventions/nuget-config
   - path: ../renovate

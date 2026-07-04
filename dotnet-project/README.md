@@ -10,6 +10,7 @@ Composite convention for .NET projects. Bundles formatting, build settings, and 
 | `gitattributes`             | Standard `.gitattributes`                                                              |
 | `gitignore-dotnet`          | .NET `.gitignore` (additive)                                                           |
 | `dotnet-sdk`                | `global.json` from Faithlife/CodingGuidelines                                          |
+| `dotnet-slnx`               | Ensures `.slnx` solutions are used instead of `.sln`                                   |
 | `dotnet-cpm`                | `Directory.Packages.props` for central package management                              |
 | `nuget-config`              | `nuget.config` from Faithlife/CodingGuidelines                                         |
 | `renovate`                  | Renovate for GitHub Actions + NuGet                                                    |
