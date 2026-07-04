@@ -10,7 +10,7 @@ None.
 
 - Creates `Directory.Packages.props` if it doesn't exist
 - Sets `ManagePackageVersionsCentrally` to `true`
-- Overwrites existing file with the published standard
+- Preserves existing central `PackageVersion` items and other project settings
 
 ## Usage
 
