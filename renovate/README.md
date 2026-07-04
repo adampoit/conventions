@@ -15,6 +15,7 @@ Installs a standard [Renovate](https://docs.renovatebot.com/) configuration for 
 | Setting               | Description                                                                                                 | Default          |
 | --------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------- |
 | `managers`            | Renovate managers to enable                                                                                 | `github-actions` |
+| `additionalManagers`  | Extra Renovate managers to append to `managers`                                                             | none             |
 | `dependencyDashboard` | Whether to enable Renovate's dependency dashboard                                                           | `true`           |
 | `labels`              | Labels to apply to Renovate PRs                                                                             | `automation`     |
 | `customManagers`      | Additional Renovate custom managers, such as regex. Adds `custom.regex` to `enabledManagers` automatically. | none             |

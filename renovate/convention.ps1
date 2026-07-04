@@ -12,9 +12,13 @@ $inputJson = Get-Content -LiteralPath $args[0] -Raw | ConvertFrom-Json
 $settings = $inputJson.settings
 
 $managers = @('github-actions')
-if ($settings -and $settings.PSObject.Properties['managers']) {
+if ($settings -and $settings.PSObject.Properties['managers'] -and $null -ne $settings.managers) {
 	$managers = @($settings.managers)
 }
+if ($settings -and $settings.PSObject.Properties['additionalManagers'] -and $null -ne $settings.additionalManagers) {
+	$managers += @($settings.additionalManagers)
+}
+$managers = @($managers | Select-Object -Unique)
 if ($settings -and $settings.PSObject.Properties['customManagers'] -and 'custom.regex' -notin $managers) {
 	$managers += 'custom.regex'
 }
