@@ -58,6 +58,11 @@ if ($existingConfig -and $existingConfig.PSObject.Properties['customManagers']) 
 if ($settings -and $settings.PSObject.Properties['customManagers']) {
 	$customManagers += @($settings.customManagers)
 }
+$customManagers = @(
+	$customManagers |
+		Group-Object { $_ | ConvertTo-Json -Compress -Depth 20 } |
+		ForEach-Object { $_.Group[0] }
+)
 
 $config = [ordered] @{
 	'$schema' = 'https://docs.renovatebot.com/renovate-schema.json'
