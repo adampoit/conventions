@@ -14,6 +14,16 @@
       ],
       "datasourceTemplate": "github-tags",
       "versioningTemplate": "regex:^v(?<major>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^repo-conventions-workflow\\/convention\\.ps1$/"],
+      "matchStrings": [
+        "(?m)^\\$checkoutAction = '(?<depName>actions/checkout)@(?<currentValue>[^'\\s]+)'",
+        "(?m)^\\$setupDotnetAction = '(?<depName>actions/setup-dotnet)@(?<currentValue>[^'\\s]+)'"
+      ],
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "regex:^v(?<major>\\d+)$"
     }
   ]
 }
