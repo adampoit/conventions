@@ -51,6 +51,14 @@ if ($settings -and $settings.PSObject.Properties['labels']) {
 }
 $labels = @($labels | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) } | Select-Object -Unique)
 
+$schedule = @('* 0-6 * * 2')
+if ($existingConfig -and $existingConfig.PSObject.Properties['schedule']) {
+	$schedule = @($existingConfig.schedule)
+}
+if ($settings -and $settings.PSObject.Properties['schedule']) {
+	$schedule = @($settings.schedule)
+}
+
 $customManagers = @()
 if ($existingConfig -and $existingConfig.PSObject.Properties['customManagers']) {
 	$customManagers += @($existingConfig.customManagers)
@@ -64,12 +72,35 @@ $customManagers = @(
 		ForEach-Object { $_.Group[0] }
 )
 
+$packageRules = @(
+	[ordered] @{
+		description = 'Group all non-major updates'
+		matchUpdateTypes = @('minor', 'patch', 'pin', 'digest')
+		groupName = 'all non-major dependencies'
+	}
+)
+if ($existingConfig -and $existingConfig.PSObject.Properties['packageRules']) {
+	$packageRules += @($existingConfig.packageRules)
+}
+if ($settings -and $settings.PSObject.Properties['packageRules']) {
+	$packageRules += @($settings.packageRules)
+}
+$packageRules = @(
+	$packageRules |
+		Group-Object { $_ | ConvertTo-Json -Compress -Depth 20 } |
+		ForEach-Object { $_.Group[0] }
+)
+
 $config = [ordered] @{
 	'$schema' = 'https://docs.renovatebot.com/renovate-schema.json'
 	extends = @('config:recommended')
+	minimumReleaseAge = '5 days'
+	internalChecksFilter = 'strict'
 	dependencyDashboard = $dependencyDashboard
 	labels = $labels
+	schedule = $schedule
 	enabledManagers = $managers
+	packageRules = $packageRules
 }
 
 if ($customManagers.Count -gt 0) {
