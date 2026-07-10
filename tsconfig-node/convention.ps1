@@ -22,6 +22,7 @@ $tsconfig = [ordered]@{
         noEmitOnError = if ($settings -and $settings.PSObject.Properties['noEmitOnError']) { [bool]$settings.noEmitOnError } else { $true }
         skipLibCheck = if ($settings -and $settings.PSObject.Properties['skipLibCheck']) { [bool]$settings.skipLibCheck } else { $true }
         esModuleInterop = if ($settings -and $settings.PSObject.Properties['esModuleInterop']) { [bool]$settings.esModuleInterop } else { $true }
+        types = @('node')
     }
     include = @('src/**/*.ts')
 } | ConvertTo-Json -Depth 10
