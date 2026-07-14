@@ -12,6 +12,7 @@ conventions:
       managers:
         - github-actions
         - npm
+  - path: ../github-settings
   - path: Faithlife/CodingGuidelines/conventions/prettierignore-section
     settings:
       name: generated
