@@ -16,6 +16,7 @@ conventions:
       managers:
         - github-actions
         - nuget
+  - path: ../github-settings
   - path: ../repo-conventions-workflow
   - path: ../license-mit
     settings:

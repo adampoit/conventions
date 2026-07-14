@@ -8,6 +8,7 @@ conventions:
       managers:
         - github-actions
         - nix
+  - path: ../github-settings
   - path: ../repo-conventions-workflow
   - path: ../license-mit
     settings:
