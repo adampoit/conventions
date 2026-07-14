@@ -22,7 +22,7 @@ rulesets:
     bypass_actors:
       - actor_id: 1825301
         actor_type: User
-        bypass_mode: pull_request
+        bypass_mode: always
     conditions:
       ref_name:
         include:

@@ -14,7 +14,7 @@ Creates `.github/settings.yml` that configures GitHub to:
 - Enable vulnerability alerts; dependency remediation is left to Renovate.
 - Protect the default branch from deletion and force pushes.
 - Require a linear commit history.
-- Require all changes to reach the default branch through a pull request.
+- Require changes to reach the default branch through a pull request, with an `@adampoit` bypass.
 - Require review conversations to be resolved before merging.
 
 The ruleset targets GitHub's `~DEFAULT_BRANCH`, so it continues to work if the default branch is renamed. Status checks are not standardized because they vary by project.
