@@ -103,6 +103,10 @@ $config = [ordered] @{
 	packageRules = $packageRules
 }
 
+if ('nix' -in $managers) {
+	$config.nix = [ordered] @{ enabled = $true }
+}
+
 if ($customManagers.Count -gt 0) {
 	$config.customManagers = $customManagers
 }
