@@ -17,7 +17,7 @@ Creates `.github/settings.yml` that configures GitHub to:
 - Require changes to reach the default branch through a pull request, with an `@adampoit` bypass.
 - Require review conversations to be resolved before merging.
 
-The ruleset targets GitHub's `~DEFAULT_BRANCH`, so it continues to work if the default branch is renamed. Status checks are not standardized because they vary by project.
+The ruleset targets GitHub's `~DEFAULT_BRANCH`, so it continues to work if the default branch is renamed. Status checks are not standardized because they vary by project. Existing `required_status_checks` rules in `.github/settings.yml` are preserved and merged into the standard ruleset whenever the convention is reapplied.
 
 ## Required configuration
 
