@@ -9,6 +9,7 @@ Composite convention for Nix projects. Bundles formatting, gitignore, direnv, an
 | `editorconfig`              | Standard `.editorconfig` from Faithlife/CodingGuidelines |
 | `gitattributes`             | Standard `.gitattributes`                                |
 | `gitignore-nix`             | Nix `.gitignore` entries (additive)                      |
+| `prettier-config`           | `.prettierrc.json` for consistent repository formatting  |
 | `nix-direnv`                | `.envrc` for nix-direnv auto-loading                     |
 | `renovate`                  | Renovate for GitHub Actions + Nix                        |
 | `repo-conventions-workflow` | GitHub Actions workflow to auto-update conventions       |

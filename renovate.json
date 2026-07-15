@@ -6,7 +6,7 @@
   "dependencyDashboard": true,
   "labels": ["automation"],
   "schedule": ["* 0-6 * * 2"],
-  "enabledManagers": ["github-actions", "custom.regex"],
+  "enabledManagers": ["github-actions", "npm", "custom.regex"],
   "packageRules": [
     {
       "description": "Group all non-major updates",

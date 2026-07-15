@@ -9,6 +9,7 @@ Composite convention for .NET projects. Bundles formatting, build settings, and 
 | `editorconfig`              | Standard `.editorconfig` from Faithlife/CodingGuidelines (tabs, tab-width 4, C# rules) |
 | `gitattributes`             | Standard `.gitattributes`                                                              |
 | `gitignore-dotnet`          | .NET `.gitignore` (additive)                                                           |
+| `prettier-config`           | `.prettierrc.json` for consistent repository formatting                                |
 | `dotnet-sdk`                | `global.json` from Faithlife/CodingGuidelines                                          |
 | `dotnet-slnx`               | Ensures `.slnx` solutions are used instead of `.sln`                                   |
 | `dotnet-cpm`                | `Directory.Packages.props` for central package management                              |

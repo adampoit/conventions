@@ -2,6 +2,7 @@ conventions:
   - path: Faithlife/CodingGuidelines/conventions/editorconfig-root
   - path: ../gitattributes
   - path: ../gitignore-nix
+  - path: ../prettier-config
   - path: ../nix-direnv
   - path: ../renovate
     settings:

@@ -51,8 +51,8 @@ repo-conventions add Faithlife/CodingGuidelines/conventions/editorconfig-root --
 | Convention                                 | Description                                                                                                                                                                  |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`typescript-project`](typescript-project) | TypeScript/Node.js project setup (editorconfig, prettierignore, optional license, GitHub settings, updater workflow; gitattributes, gitignore, prettier, tsconfig, Renovate) |
-| [`dotnet-project`](dotnet-project)         | .NET project setup (editorconfig, dotnet SDK, nuget-config, optional license, GitHub settings, updater workflow; gitattributes, gitignore, CPM, Renovate)                    |
-| [`nix-project`](nix-project)               | Nix project setup (editorconfig, optional license, GitHub settings, updater workflow; gitattributes, gitignore, direnv, Renovate)                                            |
+| [`dotnet-project`](dotnet-project)         | .NET project setup (editorconfig, Prettier, dotnet SDK, nuget-config, optional license, GitHub settings, updater workflow; gitattributes, gitignore, CPM, Renovate)          |
+| [`nix-project`](nix-project)               | Nix project setup (editorconfig, Prettier, optional license, GitHub settings, updater workflow; gitattributes, gitignore, direnv, Renovate)                                  |
 
 ### Individual
 

@@ -7,6 +7,7 @@ conventions:
   - path: Faithlife/CodingGuidelines/conventions/editorconfig-csharp
   - path: ../gitattributes
   - path: ../gitignore-dotnet
+  - path: ../prettier-config
   - path: Faithlife/CodingGuidelines/conventions/dotnet-sdk-10
   - path: Faithlife/CodingGuidelines/conventions/dotnet-slnx
   - path: ../dotnet-cpm
