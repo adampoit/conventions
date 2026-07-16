@@ -34,6 +34,15 @@ if ($existingConfig -and $existingConfig.PSObject.Properties['enabledManagers'])
 }
 $managers = @($managers | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) } | Select-Object -Unique)
 
+$extends = @('config:recommended', ':enableVulnerabilityAlerts')
+if ($existingConfig -and $existingConfig.PSObject.Properties['extends']) {
+	$extends += @($existingConfig.extends)
+}
+if ($settings -and $settings.PSObject.Properties['extends']) {
+	$extends += @($settings.extends)
+}
+$extends = @($extends | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) } | Select-Object -Unique)
+
 $dependencyDashboard = $true
 if ($existingConfig -and $existingConfig.PSObject.Properties['dependencyDashboard']) {
 	$dependencyDashboard = [bool] $existingConfig.dependencyDashboard
@@ -93,7 +102,7 @@ $packageRules = @(
 
 $config = [ordered] @{
 	'$schema' = 'https://docs.renovatebot.com/renovate-schema.json'
-	extends = @('config:recommended')
+	extends = $extends
 	minimumReleaseAge = '5 days'
 	internalChecksFilter = 'strict'
 	dependencyDashboard = $dependencyDashboard
