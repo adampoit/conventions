@@ -4,11 +4,13 @@ conventions:
   - path: Faithlife/CodingGuidelines/conventions/editorconfig-md
   - path: Faithlife/CodingGuidelines/conventions/editorconfig-yaml
   - path: ../gitattributes
+  - path: ../gitignore-node
   - path: ../prettier-config
   - path: ../renovate
     settings:
       managers:
         - github-actions
+        - npm
         - custom.regex
       customManagers:
         - customType: regex

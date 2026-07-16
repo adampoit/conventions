@@ -1,4 +1,4 @@
-name: Test
+name: Tests
 
 on:
   pull_request:
@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   pester:
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
